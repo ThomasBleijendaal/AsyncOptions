@@ -9,9 +9,7 @@ namespace AsyncOptions.ConfigurationProviders
     {
         internal AsyncRefreshConfigurationSource Source { get; }
 
-        public AsyncRefreshConfigurationProvider(
-            AsyncRefreshConfigurationSource source,
-            IConfigurationBuilder builder)
+        public AsyncRefreshConfigurationProvider(AsyncRefreshConfigurationSource source)
         {
             Source = source;
             Source.OptionsContext.OnConfigurationUpdate += OptionsContext_OnConfigurationUpdate;

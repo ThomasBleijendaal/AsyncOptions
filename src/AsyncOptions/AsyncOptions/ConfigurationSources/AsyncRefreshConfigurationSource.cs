@@ -12,13 +12,12 @@ namespace AsyncOptions.ConfigurationSources
         public AsyncRefreshConfigurationSource(Func<OptionsContext, Task> updateProcess)
         {
             OptionsContext = new OptionsContext();
-
             _optionsUpdatingProcess = Task.Run(async () => await updateProcess.Invoke(OptionsContext));
         }
 
         internal OptionsContext OptionsContext { get; set; }
 
         public IConfigurationProvider Build(IConfigurationBuilder builder) 
-            => new AsyncRefreshConfigurationProvider(this, builder);
+            => new AsyncRefreshConfigurationProvider(this);
     }
 }

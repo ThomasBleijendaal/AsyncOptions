@@ -27,13 +27,11 @@ namespace AsyncOptions.Example
 
                         context.UpdateConfiguration(new Dictionary<string, string>
                         {
-                            { "Config:Dynamic", DateTime.Now.ToString() }
+                            { "Config:Dynamic", $"{DateTime.Now}" }
                         });
                     }
                     while (true);
                 });
-
-            await configBuilder.BlockUntilConfiguredAsync();
 
             var config = configBuilder.Build();
 
